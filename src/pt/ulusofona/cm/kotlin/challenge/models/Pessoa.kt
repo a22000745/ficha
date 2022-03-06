@@ -6,7 +6,9 @@ import pt.ulusofona.cm.kotlin.challenge.exceptions.VeiculoNaoEncontradoException
 import java.time.LocalDateTime
 import java.util.*
 
-class Pessoa(val nome : String, val dataDeNascimento : Date,var posicao : Posicao, var veiculos : MutableList<Veiculo?>) {
+class Pessoa(val nome : String, val dataDeNascimento : Date) {
+    var posicao : Posicao = Posicao(0,0)
+    var veiculos : MutableList<Veiculo?> = arrayListOf()
     var carta : Carta? = null
     fun comprarVeiculo(veiculo : Veiculo){
         veiculos.add(veiculo)
@@ -43,7 +45,7 @@ class Pessoa(val nome : String, val dataDeNascimento : Date,var posicao : Posica
         return carta != null
     }
     fun tirarCarta(){
-        if ((LocalDateTime.now().dayOfYear - dataDeNascimento.ano)< 18){
+        if ((LocalDateTime.now().dayOfYear - dataDeNascimento.year)< 18){
             throw MenorDeIdadeException()
         }else{
             carta = Carta()
