@@ -6,9 +6,8 @@ import pt.ulusofona.cm.kotlin.challenge.interfaces.Ligavel
 import pt.ulusofona.cm.kotlin.challenge.interfaces.Movimentavel
 import java.util.*
 
-class Carro(var motor: Motor, identificador: String) : Veiculo(identificador, posicao, dataDeAquisicao), Movimentavel, Ligavel {
-    /*verride var posicao : Posicao = Posicao(0,0)
-    override var dataDeAquisicao : Date = Date()*/
+class Carro(var motor: Motor, identificador: String) : Veiculo(identificador,posicao = Posicao(0,0),dataDeAquisicao = Date()),
+    Movimentavel, Ligavel {
     override fun ligar() {
         if(motor.ligado){
             throw VeiculoLigadoException()
